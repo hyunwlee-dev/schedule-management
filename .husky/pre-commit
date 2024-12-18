@@ -1,0 +1,3 @@
+echo "🚦 PRE-COMMIT | eslint, prettier check..."
+
+npx lint-staged
