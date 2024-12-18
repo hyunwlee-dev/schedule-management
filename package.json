@@ -9,7 +9,6 @@
     "lint": "next lint",
     "prettier": "prettier --cache --write **/*.{ts,tsx}",
     "commit": "./node_modules/cz-customizable/standalone.js",
-    "postinstall": "husky install",
     "lint-staged": "npx lint-staged",
     "prepare": "husky"
   },
