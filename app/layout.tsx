@@ -8,13 +8,18 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
+  modal,
   children,
 }: Readonly<{
+  modal: React.ReactNode;
   children: React.ReactNode;
 }>) {
   return (
     <html lang="ko">
-      <body className={pretendardFont.className}>{children}</body>
+      <body className={pretendardFont.className}>
+        {modal}
+        {children}
+      </body>
     </html>
   );
 }
