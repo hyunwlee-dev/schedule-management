@@ -3,6 +3,8 @@
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
+import { ArrowUturnRightIcon } from '@heroicons/react/16/solid';
+
 function Modal({ children }: { children: React.ReactNode }) {
   const router = useRouter();
 
@@ -31,11 +33,13 @@ function Modal({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <div
-      onClick={handleBackdropClick}
-      className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-70 overflow-hidden"
-    >
-      <div className="absolute bg-white rounded-xl p-10 w-[50vw] h-[70vh] overflow-auto scrollbar-hide">{children}</div>
+    <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-70 overflow-hidden">
+      <div className="absolute bg-white rounded-xl p-10 w-[50vw] h-[70vh] overflow-auto scrollbar-hide">
+        <button className="absolute top-10 right-10" onClick={handleBackdropClick}>
+          <ArrowUturnRightIcon className="text-slate-600 size-6" />
+        </button>
+        {children}
+      </div>
     </div>
   );
 }
