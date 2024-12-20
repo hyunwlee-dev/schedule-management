@@ -1,0 +1,36 @@
+{
+  "todo-tree.general.tags": ["TODO", "FIXME", "NAME", "NOTE"],
+  "todo-tree.highlights.customHighlight": {
+    "TODO": {
+      "background": "#54BC52",
+      "foreground": "#ffffff",
+      "gutterIcon": true,
+      "icon": "pin",
+      "iconColour": "#54BC52"
+    },
+
+    "FIXME": {
+      "background": "#FF532E",
+      "foreground": "#ffffff",
+      "gutterIcon": true,
+      "icon": "alert",
+      "iconColour": "#FF532E"
+    },
+
+    "NAME": {
+      "background": "#3958F5",
+      "foreground": "#ffffff",
+      "gutterIcon": true,
+      "icon": "tag",
+      "iconColour": "#3958F5"
+    },
+
+    "NOTE": {
+      "background": "#FFA439",
+      "foreground": "#ffffff",
+      "gutterIcon": true,
+      "icon": "check-circle-fill",
+      "iconColour": "#FFA439"
+    }
+  }
+}
