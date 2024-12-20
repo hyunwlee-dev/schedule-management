@@ -8,40 +8,15 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "extends": [
-    "next/core-web-vitals",
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
-  ],
+  "extends": ["next/core-web-vitals", "eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
   "rules": {
     "no-var": "error",
     "no-multiple-empty-lines": "error",
     "no-console": "error",
     "no-unused-vars": "error",
-    "import/order": [
-      "error",
-      {
-        "groups": [
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index",
-          "object"
-        ],
-        "alphabetize": { "order": "asc", "caseInsensitive": true }
-      }
-    ],
     "@typescript-eslint/no-unnecessary-type-constraint": "off",
     "@typescript-eslint/no-explicit-any": "warn",
     "@typescript-eslint/no-empty-interface": "off"
   },
-  "ignorePatterns": [
-    ".next/",
-    "node_modules/",
-    "build/",
-    "*.config.js"
-  ],
+  "ignorePatterns": [".next/", "node_modules/", "build/", "*.config.js"]
 }
