@@ -35,9 +35,7 @@ function Modal({ children }: { children: React.ReactNode }) {
       onClick={handleBackdropClick}
       className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-70 overflow-hidden"
     >
-      <div className="absolute bg-white rounded-xl p-10 w-[50vw] h-[70vh] overflow-auto scrollbar-hide">
-        {children}
-      </div>
+      <div className="absolute bg-white rounded-xl p-10 w-[50vw] h-[70vh] overflow-auto scrollbar-hide">{children}</div>
     </div>
   );
 }

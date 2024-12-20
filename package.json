@@ -13,15 +13,21 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "next": "15.1.1",
     "react": "^19.0.0",
+    "react-calendar": "^5.1.0",
     "react-dom": "^19.0.0",
+    "tailwind-merge": "^2.5.5",
     "tailwind-scrollbar-hide": "^1.1.7"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
     "@eslint/eslintrc": "^3",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -48,7 +54,7 @@
   "lint-staged": {
     "*.{ts,tsx}": [
       "npx eslint --fix --ignore-pattern .next/",
-      "prettier --cache --write **/*.{ts,tsx}"
+      "npx prettier --cache --write **/*.{ts,tsx}"
     ]
   }
 }

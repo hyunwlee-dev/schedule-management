@@ -1,16 +1,13 @@
-import Link from 'next/link';
+// import Link from 'next/link';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 
 async function Home() {
-  const dates = Array.from({ length: 6 }, (_, i) => i + 1);
+  // const dates = Array.from({ length: 6 }, (_, i) => i + 1);
   return (
     <main>
-      <section className="cards-container">
-        {dates.map(date => (
-          <Link key={date} href={`/schedules/${date}`} passHref>
-            {date}
-          </Link>
-        ))}
-      </section>
+      <h1 className="text-xl">스케줄 일정 관리</h1>
+      <Calendar />
     </main>
   );
 }
