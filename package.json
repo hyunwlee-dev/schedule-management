@@ -10,7 +10,8 @@
     "prettier": "prettier --cache --write **/*.{ts,tsx}",
     "commit": "./node_modules/cz-customizable/standalone.js",
     "lint-staged": "npx lint-staged",
-    "prepare": "husky"
+    "prepare": "husky",
+    "generate-types": "npx supabase gen types typescript --project-id jarsakyedrrqhvirnxgj --schema public > database.types.ts"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
