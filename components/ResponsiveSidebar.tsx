@@ -3,12 +3,12 @@
 import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
 
-import cn from '@/utils/cn';
+import cn from '@utils/cn';
 
 import Sidebar from './commons/sidebar/Sidebar';
 import { useSidebarContext } from './commons/sidebar/SidebarProvider';
 
-function ScheduleSidebar() {
+function ResponsiveSidebar() {
   const segment = useSelectedLayoutSegment();
   const { sidebarStyle } = useSidebarContext();
 
@@ -30,4 +30,4 @@ function ScheduleSidebar() {
   );
 }
 
-export default ScheduleSidebar;
+export default ResponsiveSidebar;
