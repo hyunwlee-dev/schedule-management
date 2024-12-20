@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
 
+import cn from '@/utils/cn';
+
 import Sidebar from './commons/sidebar/Sidebar';
 import { useSidebarContext } from './commons/sidebar/SidebarProvider';
 
@@ -11,7 +13,7 @@ function ScheduleSidebar() {
   const { sidebarStyle } = useSidebarContext();
 
   return (
-    <Sidebar className={sidebarStyle}>
+    <Sidebar className={cn('flex-shrink-0', sidebarStyle)}>
       <Sidebar.Group className="font-normal">
         <Sidebar.List>
           <Link href="/">

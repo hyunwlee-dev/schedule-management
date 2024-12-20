@@ -26,7 +26,7 @@ export default function RootLayout({
           <ScheduleSidebar />
           <div className="flex flex-auto flex-col">
             <Header />
-            <main className="flex-auto px-10 pt-9">
+            <main className="flex-auto flex justify-center mt-20">
               {children}
               {modal}
             </main>

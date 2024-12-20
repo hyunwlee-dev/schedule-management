@@ -8,7 +8,7 @@ function Header() {
   const { handleToggle } = useSidebarContext();
 
   return (
-    <header className="flex justify-between md:justify-end px-[16px] pb-[18px] pt-[16px] align-middle">
+    <header className="bg-slate-100 flex justify-between md:justify-end px-[16px] pb-[18px] pt-[16px] align-middle">
       <button onClick={handleToggle} className="block md:hidden">
         <Bars3Icon className="text-slate-600 size-6" />
       </button>
