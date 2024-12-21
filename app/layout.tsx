@@ -28,7 +28,7 @@ export default function RootLayout({
             <ResponsiveSidebar />
             <div className="flex flex-auto flex-col">
               <Header />
-              <main className="flex-auto flex justify-center mt-20">
+              <main className="flex-auto flex justify-center">
                 {children}
                 {modal}
               </main>

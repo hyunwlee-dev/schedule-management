@@ -33,7 +33,9 @@ async function Home() {
 
   return (
     <HydrationBoundary state={dehydratedState}>
-      <CalendarBoard />
+      <section className="flex justify-center items-center">
+        <CalendarBoard />
+      </section>
     </HydrationBoundary>
   );
 }
