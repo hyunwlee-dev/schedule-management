@@ -1,0 +1,1 @@
+export const SCHEDULE_DATE_FORMAT = 'YYYY-MM-DD';
