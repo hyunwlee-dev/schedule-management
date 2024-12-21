@@ -1,28 +1,23 @@
 @import 'react-calendar/dist/Calendar.css';
 
 .react-calendar {
-  @apply flex flex-col gap-10 size-3/4 border border-slate-200 shadow-lg rounded-lg;
+  @apply size-3/4 border h-4/5 px-4 border-slate-200 shadow-lg rounded-lg;
 }
 
 .react-calendar__navigation {
-  @apply mt-3;
+  @apply border-b border-slate-200;
 }
 
 .react-calendar__month-view__days__day {
-  @apply relative h-16 border border-emerald-200;
+  @apply bg-slate-100;
 }
 
 .react-calendar__month-view__days__day abbr {
-  position: absolute;
-  top: 25%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  @apply inline-block w-full border-x border-t border-slate-500 rounded-t-md;
 }
-abbr {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
+
+.react-calendar__tile.react-calendar__month-view__days__day {
+  @apply p-1 m-0;
 }
 
 /* yyyy년 MM월 */
@@ -40,6 +35,7 @@ abbr {
 .react-calendar__navigation button:enabled:focus {
   @apply bg-slate-50;
 }
+
 .react-calendar__navigation__label:enabled:hover span,
 .react-calendar__navigation__label:enabled:focus span {
   @apply text-slate-600;
@@ -51,7 +47,7 @@ abbr {
 
 .react-calendar__tile:enabled:hover abbr,
 .react-calendar__tile:enabled:focus abbr {
-  @apply text-white bg-emerald-300 rounded-full;
+  @apply text-white bg-blue-400;
 }
 
 .react-calendar__tile:enabled:hover,
@@ -60,19 +56,28 @@ abbr {
 }
 
 .react-calendar__tile--active abbr {
-  @apply text-white bg-emerald-200 rounded-full;
+  @apply text-white bg-blue-400;
+}
+
+.react-calendar__tile--active div {
+  @apply text-slate-900;
 }
 
 .react-calendar__tile--active {
-  background-color: transparent;
+  @apply bg-transparent;
 }
 
+/* 오늘 */
 .react-calendar__tile--now abbr {
-  @apply text-white bg-emerald-500 rounded-full;
+  @apply text-white bg-red-400;
+}
+
+.react-calendar__tile--now div {
+  @apply text-slate-900;
 }
 
 .react-calendar__tile--now {
-  background: transparent;
+  @apply bg-transparent;
 }
 
 .react-calendar__tile--now:enabled:hover,
