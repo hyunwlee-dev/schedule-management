@@ -1,8 +1,7 @@
-import React from 'react';
-
-import { ScheduleRow } from '@/actions/schedule';
-import cn from '@/utils/cn';
+import { ScheduleRow } from '@actions/schedule';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useCreateScheduleMutation, useUpdateScheduleMutation } from '@queries/useScheduleMutation';
+import cn from '@utils/cn';
 import dayjs from 'dayjs';
 import { useForm } from 'react-hook-form';
 import z from 'zod';
@@ -32,6 +31,8 @@ export type ScheduleFormProps = {
 };
 
 function ScheduleForm({ type = DEFAULT_TYPE, schedule }: ScheduleFormProps) {
+  const { mutateAsync: createSchedule } = useCreateScheduleMutation();
+  const { mutateAsync: updateSchedule } = useUpdateScheduleMutation();
   const {
     register,
     handleSubmit,
@@ -53,12 +54,26 @@ function ScheduleForm({ type = DEFAULT_TYPE, schedule }: ScheduleFormProps) {
           },
   });
 
-  const onCreateSubmit = async (data: z.infer<typeof scheduleSchema>) => {
-    console.log('create data: ', JSON.stringify(data));
+  const onCreateSubmit = async ({ title, name, startAt, endAt }: z.infer<typeof scheduleSchema>) => {
+    const parsedData = {
+      title,
+      name,
+      start_at: startAt,
+      end_at: endAt,
+    };
+
+    await createSchedule(parsedData);
   };
 
-  const onUpdateSubmit = async (data: z.infer<typeof scheduleSchema>) => {
-    console.log('updated data: ', JSON.stringify(data));
+  const onUpdateSubmit = async ({ title, name, startAt, endAt }: z.infer<typeof scheduleSchema>) => {
+    const parsedData = {
+      title,
+      name,
+      id: schedule?.id,
+      start_at: startAt,
+      end_at: endAt,
+    };
+    await updateSchedule(parsedData);
   };
 
   return (

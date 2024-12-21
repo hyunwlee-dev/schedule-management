@@ -26,6 +26,7 @@ export const getSchedules = async ({ startDate, endDate }: { startDate: string; 
 };
 
 export const createSchedule = async (schedule: ScheduleRowInsert) => {
+  console.log('schedule: ', JSON.stringify(schedule));
   const supabase = await createClient();
   const { data, error } = await supabase.from('schedule').insert({
     ...schedule,

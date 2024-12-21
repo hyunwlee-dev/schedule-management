@@ -5,7 +5,6 @@ export type Database = {
     Tables: {
       schedule: {
         Row: {
-          color: string | null;
           created_at: string;
           end_at: string;
           id: number;
@@ -15,7 +14,6 @@ export type Database = {
           updated_at: string | null;
         };
         Insert: {
-          color?: string | null;
           created_at?: string;
           end_at: string;
           id?: number;
@@ -25,7 +23,6 @@ export type Database = {
           updated_at?: string | null;
         };
         Update: {
-          color?: string | null;
           created_at?: string;
           end_at?: string;
           id?: number;
