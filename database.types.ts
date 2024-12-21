@@ -3,10 +3,42 @@ export type Json = string | number | boolean | null | { [key: string]: Json | un
 export type Database = {
   public: {
     Tables: {
+      schedule: {
+        Row: {
+          color: string | null;
+          created_at: string;
+          end_at: string;
+          id: number;
+          name: string;
+          start_at: string;
+          title: string;
+          updated_at: string | null;
+        };
+        Insert: {
+          color?: string | null;
+          created_at?: string;
+          end_at: string;
+          id?: number;
+          name: string;
+          start_at: string;
+          title: string;
+          updated_at?: string | null;
+        };
+        Update: {
+          color?: string | null;
+          created_at?: string;
+          end_at?: string;
+          id?: number;
+          name?: string;
+          start_at?: string;
+          title?: string;
+          updated_at?: string | null;
+        };
+        Relationships: [];
+      };
       todo: {
         Row: {
           completed: boolean;
-          content: string;
           created_at: string;
           id: number;
           title: string;
@@ -14,7 +46,6 @@ export type Database = {
         };
         Insert: {
           completed: boolean;
-          content: string;
           created_at?: string;
           id?: number;
           title: string;
@@ -22,7 +53,6 @@ export type Database = {
         };
         Update: {
           completed?: boolean;
-          content?: string;
           created_at?: string;
           id?: number;
           title?: string;
