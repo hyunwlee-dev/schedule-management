@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 
 import { ArrowUturnRightIcon } from '@heroicons/react/16/solid';
 
+// TODO: 공통 컴포넌트로 빼기
 function Modal({ children }: { children: React.ReactNode }) {
   const router = useRouter();
 
