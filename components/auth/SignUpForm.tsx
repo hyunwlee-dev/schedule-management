@@ -1,14 +1,19 @@
 'use client';
 
+import { useState } from 'react';
+
+import cn from '@/utils/cn';
 import Input from '@components/commons/input/Input';
 import { type SignUpFormSchemaType, signUpFormSchema } from '@constants/form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useSignUpMutation } from '@queries/useSignUpMutation';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 
 import NewPasswordField from './NewPasswordField';
 import ValidPasswordField from './ValidPasswordField';
 
 function SignUpForm() {
+  const { mutateAsync: signUp, isPending } = useSignUpMutation();
   const methods = useForm<SignUpFormSchemaType>({
     resolver: zodResolver(signUpFormSchema),
     defaultValues: {
@@ -17,9 +22,11 @@ function SignUpForm() {
       validPassword: '',
     },
   });
+  const [isRequiredEmailAuthentication, setIsRequiredEmailAuthentication] = useState(false);
 
-  const onSubmit: SubmitHandler<SignUpFormSchemaType> = async (data) => {
-    console.log('Submitted:', data);
+  const onSubmit: SubmitHandler<SignUpFormSchemaType> = async ({ email, newPassword }) => {
+    const data = await signUp({ email, password: newPassword });
+    if (data) setIsRequiredEmailAuthentication(true);
   };
 
   return (
@@ -41,8 +48,14 @@ function SignUpForm() {
         </div>
         <NewPasswordField name="newPassword" validPasswordName="validPassword" />
         <ValidPasswordField name="validPassword" newPasswordName="newPassword" />
-        <button type="submit" className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md">
-          회원가입
+        <button
+          type="submit"
+          className={cn('mt-4 bg-blue-500 text-white px-4 py-2 rounded-md', [
+            { 'opacity-50': isPending || isRequiredEmailAuthentication },
+          ])}
+          disabled={isPending || isRequiredEmailAuthentication}
+        >
+          {isRequiredEmailAuthentication ? '메일함을 확인해주세요' : '회원가입'}
         </button>
       </form>
     </FormProvider>

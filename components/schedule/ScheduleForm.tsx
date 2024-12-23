@@ -1,4 +1,5 @@
 import { ScheduleRow } from '@actions/schedule';
+import { SCHEDULE_DATE_FORMAT } from '@constants/schedule';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useCreateScheduleMutation, useUpdateScheduleMutation } from '@queries/useScheduleMutation';
 import cn from '@utils/cn';
@@ -49,8 +50,8 @@ function ScheduleForm({ type = DEFAULT_TYPE, schedule }: ScheduleFormProps) {
           }
         : {
             ...schedule,
-            startAt: dayjs(schedule?.start_at).format('YYYY-MM-DD'),
-            endAt: dayjs(schedule?.end_at).format('YYYY-MM-DD'),
+            startAt: dayjs(schedule?.start_at).format(SCHEDULE_DATE_FORMAT),
+            endAt: dayjs(schedule?.end_at).format(SCHEDULE_DATE_FORMAT),
           },
   });
 

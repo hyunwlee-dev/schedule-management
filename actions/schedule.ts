@@ -1,7 +1,7 @@
 'use server';
 
 import type { Database } from '@/database.types';
-import { PostgrestError } from '@supabase/postgrest-js';
+import type { PostgrestError } from '@supabase/postgrest-js';
 import createClient from '@utils/supabase/server';
 
 export type ScheduleRow = Database['public']['Tables']['schedule']['Row'];
@@ -10,6 +10,7 @@ export type ScheduleRowUpdate = Database['public']['Tables']['schedule']['Update
 
 const handleError = (error: PostgrestError) => {
   console.error(error);
+  //TODO: snackbar
   throw new Error(error.message);
 };
 
@@ -20,6 +21,7 @@ export const getSchedules = async ({ startDate, endDate }: { startDate: string; 
     .select('*')
     .or(`and(start_at.lte.${endDate},end_at.gte.${startDate})`)
     .order('start_at', { ascending: true });
+
   if (error) handleError(error);
 
   return data;
@@ -33,6 +35,7 @@ export const createSchedule = async (schedule: ScheduleRowInsert) => {
   });
 
   if (error) handleError(error);
+
   return data;
 };
 
