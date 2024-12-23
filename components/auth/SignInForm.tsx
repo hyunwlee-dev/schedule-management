@@ -1,12 +1,19 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
+import { useSignInMutation } from '@/queries/useSignInMutation';
+import cn from '@/utils/cn';
 import { type SignInFormSchemaType, signInFormSchema } from '@constants/form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
 function SignInForm() {
+  const router = useRouter();
+  const { mutateAsync: signIn, isPending } = useSignInMutation();
   const {
     register,
+    setError,
     handleSubmit,
     formState: { errors },
   } = useForm<SignInFormSchemaType>({
@@ -17,7 +24,19 @@ function SignInForm() {
     },
   });
 
-  const onSubmit = async () => {};
+  const onSubmit = async (data: SignInFormSchemaType) => {
+    const result = await signIn(data);
+
+    if (result.error) {
+      setError('password', {
+        type: 'manual',
+        message: '이메일과 비밀번호를 확인해주세요',
+      });
+      return;
+    }
+
+    router.back();
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="mt-8 flex flex-col gap-4">
@@ -42,7 +61,11 @@ function SignInForm() {
         {errors.password?.message && <span className="text-xs text-red-500">{errors.password.message}</span>}
       </div>
 
-      <button type="submit" className="border bg-blue-500 text-white px-5 py-2 text-lg font-medium rounded-md">
+      <button
+        type="submit"
+        className={cn('mt-4 bg-blue-500 text-white px-4 py-2 rounded-md', [{ 'opacity-50': isPending }])}
+        disabled={isPending}
+      >
         로그인
       </button>
     </form>

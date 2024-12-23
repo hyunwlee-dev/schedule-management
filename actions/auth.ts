@@ -24,3 +24,31 @@ export const signUp = async ({ email, password }: { email: string; password: str
 
   return data;
 };
+
+export const getSession = async () => {
+  const supabase = await createClient();
+
+  const {
+    data: { session },
+    error,
+  } = await supabase.auth.getSession();
+
+  if (error) handleError(error);
+
+  return session;
+};
+
+export const signIn = async ({ email, password }: { email: string; password: string }) => {
+  const supabase = await createClient();
+  const data = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
+
+  return data;
+};
+
+export const signOut = async () => {
+  const supabase = await createClient();
+  await supabase.auth.signOut();
+};

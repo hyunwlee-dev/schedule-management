@@ -25,16 +25,6 @@ function ResponsiveSidebar() {
             <span className={segment === 'live-chatting' ? 'font-bold' : ''}>1:1 실시간 채팅</span>
           </Link>
         </Sidebar.List>
-        <Sidebar.List>
-          <Link href="/login">
-            <span className={segment === 'login' ? 'font-bold' : ''}>로그인</span>
-          </Link>
-        </Sidebar.List>
-        <Sidebar.List>
-          <Link href="/sign-up">
-            <span className={segment === 'sign-up' ? 'font-bold' : ''}>회원가입</span>
-          </Link>
-        </Sidebar.List>
       </Sidebar.Group>
     </Sidebar>
   );
