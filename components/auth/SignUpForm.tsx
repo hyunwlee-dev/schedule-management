@@ -2,11 +2,11 @@
 
 import { useState } from 'react';
 
-import cn from '@/utils/cn';
 import Input from '@components/commons/input/Input';
 import { type SignUpFormSchemaType, signUpFormSchema } from '@constants/form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useSignUpMutation } from '@queries/useSignUpMutation';
+import cn from '@utils/cn';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 
 import NewPasswordField from './NewPasswordField';

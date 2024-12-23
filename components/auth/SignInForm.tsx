@@ -2,10 +2,10 @@
 
 import { useRouter } from 'next/navigation';
 
-import { useSignInMutation } from '@/queries/useSignInMutation';
-import cn from '@/utils/cn';
 import { type SignInFormSchemaType, signInFormSchema } from '@constants/form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useSignInMutation } from '@queries/useSignInMutation';
+import cn from '@utils/cn';
 import { useForm } from 'react-hook-form';
 
 function SignInForm() {
