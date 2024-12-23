@@ -2,7 +2,7 @@
 
 import type { Database } from '@/database.types';
 import type { PostgrestError } from '@supabase/postgrest-js';
-import createClient from '@utils/supabase/server';
+import { createClient } from '@utils/supabase/server';
 
 export type ScheduleRow = Database['public']['Tables']['schedule']['Row'];
 export type ScheduleRowInsert = Database['public']['Tables']['schedule']['Insert'];

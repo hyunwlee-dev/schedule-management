@@ -1,7 +1,7 @@
 'use server';
 
 import type { AuthError } from '@supabase/auth-js';
-import createClient from '@utils/supabase/server';
+import { createClient } from '@utils/supabase/server';
 
 const handleError = (error: AuthError) => {
   console.error(error);
@@ -15,7 +15,7 @@ export const signUp = async ({ email, password }: { email: string; password: str
     email,
     password,
     options: {
-      //TODO: to env environmnet baseURL
+      // TODO: to env environmnet baseURL
       emailRedirectTo: 'http://localhost:3000/sign-up/confirm',
     },
   });

@@ -4,12 +4,11 @@ import { getSession } from '@actions/auth';
 import Header from '@components/Header';
 import ResponsiveSidebar from '@components/ResponsiveSidebar';
 import { SidebarProvider } from '@components/commons/sidebar/SidebarProvider';
+import AuthProvider from '@components/providers/AuthProvider';
 import QueryProvider from '@components/providers/QueryProvider';
 import { pretendardFont } from '@styles/font';
 import '@styles/globals.css';
 import cn from '@utils/cn';
-
-import AuthProvider from '@/components/providers/AuthProvider';
 
 export const metadata: Metadata = {
   title: 'schedule management',
