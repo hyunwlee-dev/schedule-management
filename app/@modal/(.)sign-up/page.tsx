@@ -1,6 +1,5 @@
 import SignUpForm from '@components/auth/SignUpForm';
-
-import Modal from './Modal';
+import Modal from '@components/commons/layout/modal';
 
 async function SignUpModal() {
   return (

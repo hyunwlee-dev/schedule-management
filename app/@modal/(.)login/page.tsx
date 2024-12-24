@@ -1,8 +1,7 @@
 import Link from 'next/link';
 
 import SignInForm from '@components/auth/SignInForm';
-
-import Modal from './Modal';
+import Modal from '@components/commons/layout/modal';
 
 async function LoginModal() {
   return (
