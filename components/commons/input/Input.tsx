@@ -35,7 +35,7 @@ function Input({ required = false, inputProps, label, invalid, buttonGroup, lead
             type={inputProps?.type || 'text'}
             {...inputProps}
             className={cn(
-              'bg-white w-full',
+              'border bg-white w-full px-3 py-2 rounded-md',
               {
                 'border-red-500': invalid,
                 'pl-[10px]': leadingIcon,
