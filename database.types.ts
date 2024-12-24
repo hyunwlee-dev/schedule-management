@@ -32,6 +32,7 @@ export type Database = {
       };
       schedule: {
         Row: {
+          color: string;
           created_at: string;
           end_at: string;
           id: number;
@@ -41,6 +42,7 @@ export type Database = {
           updated_at: string | null;
         };
         Insert: {
+          color: string;
           created_at?: string;
           end_at: string;
           id?: number;
@@ -50,6 +52,7 @@ export type Database = {
           updated_at?: string | null;
         };
         Update: {
+          color?: string;
           created_at?: string;
           end_at?: string;
           id?: number;
