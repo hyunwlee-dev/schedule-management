@@ -97,7 +97,6 @@ function CalendarBoard() {
    */
   const getMiddleMarkDateWeekly = () => {
     const startAndEndDatesWeekly = getStartAndEndDatesWeekly();
-    console.log('startAndEndDatesWeekly: ', startAndEndDatesWeekly);
 
     if (!schedules) return;
 
