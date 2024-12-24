@@ -8,25 +8,34 @@ export type Database = {
           created_at: string;
           id: number;
           is_deleted: boolean | null;
-          message: string;
+          msg: string;
+          msg2: string | null;
           receiver: string;
           sender: string;
+          tel: string | null;
+          url: string | null;
         };
         Insert: {
           created_at?: string;
           id?: number;
           is_deleted?: boolean | null;
-          message: string;
+          msg: string;
+          msg2?: string | null;
           receiver: string;
           sender: string;
+          tel?: string | null;
+          url?: string | null;
         };
         Update: {
           created_at?: string;
           id?: number;
           is_deleted?: boolean | null;
-          message?: string;
+          msg?: string;
+          msg2?: string | null;
           receiver?: string;
           sender?: string;
+          tel?: string | null;
+          url?: string | null;
         };
         Relationships: [];
       };

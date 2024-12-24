@@ -22,7 +22,19 @@ export const getUserById = async (userId: string | null) => {
   return data.user;
 };
 
-export const sendMessage = async ({ message, userId }: { message: string; userId: string | null }) => {
+export const sendMessage = async ({
+  msg,
+  msg2,
+  url,
+  tel,
+  userId,
+}: {
+  msg: string;
+  msg2?: string;
+  url?: string;
+  tel?: string;
+  userId: string | null;
+}) => {
   if (userId === null) return;
 
   const supabase = await createAdmin();
@@ -34,7 +46,10 @@ export const sendMessage = async ({ message, userId }: { message: string; userId
   if (error || !session?.user) throw new Error('권한이 없는 유저입니다.');
 
   const { data, error: sendMessageError } = await supabase.from('message').insert({
-    message,
+    msg,
+    msg2,
+    url,
+    tel,
     receiver: userId,
     sender: session.user.id,
     created_at: new Date().toISOString(),
