@@ -1,11 +1,12 @@
 import SignUpForm from '@components/auth/SignUpForm';
 
-function LoginPage() {
+function SignUpPage() {
   return (
-    <section>
+    <section className="flex flex-col gap-8 mt-32">
+      <h2 className="text-2xl">회원가입</h2>
       <SignUpForm />
     </section>
   );
 }
 
-export default LoginPage;
+export default SignUpPage;

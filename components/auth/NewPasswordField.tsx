@@ -82,7 +82,7 @@ function NewPasswordField<TFieldValues extends FieldValues>({
           value: field.value || '',
           type: isVisible ? 'text' : 'password',
           placeholder: `${label}를 입력해주세요.`,
-          className: cn('border rounded-md px-3 py-2', {
+          className: cn({
             'border-red-500': fieldState.error?.type === 'manual',
             'border-emerald-500': fieldState.error?.type === 'success',
           }),

@@ -2,13 +2,14 @@
 
 import { useRouter } from 'next/navigation';
 
+import Input from '@components/commons/input/Input';
 import { type SignInFormSchemaType, signInFormSchema } from '@constants/form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useSignInMutation } from '@queries/useSignInMutation';
 import cn from '@utils/cn';
 import { useForm } from 'react-hook-form';
 
-function SignInForm() {
+function SignInForm({ className }: { className?: string }) {
   const router = useRouter();
   const { mutateAsync: signIn, isPending } = useSignInMutation();
   const {
@@ -39,25 +40,25 @@ function SignInForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="mt-8 flex flex-col gap-4">
+    <form onSubmit={handleSubmit(onSubmit)} className={cn('flex flex-col gap-4', className)}>
       <div className="flex flex-col gap-1">
-        <span>
-          <label htmlFor="email">이메일</label>
-          <input id="email" type="email" {...register('email')} className="border border-slate-400 rounded-sm" />
-        </span>
+        <Input
+          label="이메일"
+          inputProps={{
+            ...register('email'),
+          }}
+        />
         {errors.email?.message && <span className="text-xs text-red-500">{errors.email.message}</span>}
       </div>
 
       <div className="flex flex-col gap-1">
-        <span>
-          <label htmlFor="password">비밀번호</label>
-          <input
-            type="password"
-            id="password"
-            {...register('password')}
-            className="border border-slate-400 rounded-sm"
-          />
-        </span>
+        <Input
+          label="비밀번호"
+          inputProps={{
+            type: 'password',
+            ...register('password'),
+          }}
+        />
         {errors.password?.message && <span className="text-xs text-red-500">{errors.password.message}</span>}
       </div>
 

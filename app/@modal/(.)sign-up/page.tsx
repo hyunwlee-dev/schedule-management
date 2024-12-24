@@ -2,11 +2,12 @@ import SignUpForm from '@components/auth/SignUpForm';
 
 import Modal from './Modal';
 
-async function LoginModal() {
+async function SignUpModal() {
   return (
     <Modal>
-      <SignUpForm />
+      <h2 className="text-2xl">회원가입</h2>
+      <SignUpForm className="mt-10" />
     </Modal>
   );
 }
-export default LoginModal;
+export default SignUpModal;

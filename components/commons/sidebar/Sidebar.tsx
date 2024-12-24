@@ -36,7 +36,7 @@ function SidebarList({
         className,
       )}
     >
-      <span className="text-lg">{children} </span>
+      <span className="text-lg">{children}</span>
     </li>
   );
 }

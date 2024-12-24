@@ -12,7 +12,7 @@ import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import NewPasswordField from './NewPasswordField';
 import ValidPasswordField from './ValidPasswordField';
 
-function SignUpForm() {
+function SignUpForm({ className }: { className?: string }) {
   const { mutateAsync: signUp, isPending } = useSignUpMutation();
   const methods = useForm<SignUpFormSchemaType>({
     resolver: zodResolver(signUpFormSchema),
@@ -31,7 +31,7 @@ function SignUpForm() {
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(onSubmit)}>
+      <form onSubmit={methods.handleSubmit(onSubmit)} className={cn('flex flex-col gap-4', className)}>
         <div className="flex flex-col gap-1">
           <label className="text-xs font-medium leading-4 -tracking-[0.5px] text-slate-600" htmlFor="email">
             이메일
@@ -39,7 +39,6 @@ function SignUpForm() {
           <Input
             inputProps={{
               ...methods.register('email'),
-              className: 'border rounded-md px-3 py-2',
             }}
           />
           {methods.formState.errors.email?.message && (

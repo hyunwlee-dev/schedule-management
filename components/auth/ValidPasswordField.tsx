@@ -62,7 +62,7 @@ function ValidPasswordField({ name, newPasswordName, label = '비밀번호 확�
           ...field,
           type: isVisible ? 'text' : 'password',
           placeholder: '비밀번호를 확인하세요',
-          className: cn('border rounded-md px-3 py-2', {
+          className: cn({
             'border-red-500': fieldState.error?.type === 'manual',
             'border-emerald-500': fieldState.error?.type === 'success',
           }),
