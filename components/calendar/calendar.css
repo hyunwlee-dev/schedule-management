@@ -1,7 +1,7 @@
 @import 'react-calendar/dist/Calendar.css';
 
 .react-calendar {
-  @apply size-3/4 border h-4/5 px-4 border-slate-200 shadow-lg rounded-lg;
+  @apply w-3/4 border h-4/5 px-4 border-slate-200 shadow-lg rounded-lg bg-neutral-800;
 }
 
 .react-calendar__navigation {
@@ -9,36 +9,51 @@
 }
 
 .react-calendar__month-view__days__day {
-  @apply bg-slate-100;
+  @apply bg-neutral-800 w-12;
 }
 
+/* xx일 */
 .react-calendar__month-view__days__day abbr {
-  @apply inline-block w-full border-x border-t border-slate-500 rounded-t-md;
+  @apply inline-block w-full;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+  @apply text-neutral-500;
 }
 
 .react-calendar__tile.react-calendar__month-view__days__day {
-  @apply p-1 m-0;
+  @apply px-0 py-1 m-0;
+}
+
+.react-calendar__month-view__days__day--weekend:not(.react-calendar__month-view__days__day--neighboringMonth) {
+  @apply text-red-400;
+}
+
+.react-calendar__tile.react-calendar__month-view__days__day:not(
+    .react-calendar__month-view__days__day--neighboringMonth
+  ):not(.react-calendar__month-view__days__day--weekend) {
+  @apply text-white;
 }
 
 /* yyyy년 MM월 */
 .react-calendar__navigation__label > span {
-  @apply text-slate-600 text-base font-bold rounded-lg;
+  @apply text-white text-base font-bold rounded-lg;
 }
 
 /* 요일 */
 .react-calendar__month-view__weekdays abbr {
-  @apply text-slate-600 font-bold no-underline;
+  @apply text-white font-bold no-underline;
 }
 
 /* navigation */
 .react-calendar__navigation button:enabled:hover,
 .react-calendar__navigation button:enabled:focus {
-  @apply bg-slate-50;
+  @apply bg-neutral-700;
 }
 
 .react-calendar__navigation__label:enabled:hover span,
 .react-calendar__navigation__label:enabled:focus span {
-  @apply text-slate-600;
+  @apply text-white;
 }
 
 .react-calendar__navigation__arrow {
@@ -60,7 +75,7 @@
 }
 
 .react-calendar__tile--active div {
-  @apply text-slate-900;
+  @apply text-white;
 }
 
 .react-calendar__tile--active {
