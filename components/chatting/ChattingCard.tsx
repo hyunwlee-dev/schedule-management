@@ -1,9 +1,15 @@
+'use client';
+
+import Image from 'next/image';
 import Link from 'next/link';
 
+import type { Attachment } from '@/types/file';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@components/commons/card/card';
 import { LinkIcon } from '@heroicons/react/16/solid';
-import { PhoneIcon } from '@heroicons/react/24/solid';
+import { DocumentTextIcon, PhoneIcon, PhotoIcon } from '@heroicons/react/24/solid';
 import cn from '@utils/cn';
+import getImageUrlFromStoarge from '@utils/getImageUrlFromStorage';
+import { isImage, resolveFileIconOrImage } from '@utils/resolveFileIconOrImage';
 import { VariantProps, cva } from 'class-variance-authority';
 
 const DEFAULT_TYPE = 0;
@@ -14,6 +20,7 @@ type ChattingCardProps = {
   url?: string | null;
   tel?: string | null;
   className?: string;
+  file?: Attachment | null;
 } & VariantProps<typeof chattingCardCardVarinats>;
 
 const chattingCardCardVarinats = cva('mx-4 my-2', {
@@ -25,7 +32,7 @@ const chattingCardCardVarinats = cva('mx-4 my-2', {
   },
 });
 
-function ChattingCard({ type = DEFAULT_TYPE, msg, msg2, url, tel, className }: ChattingCardProps) {
+function ChattingCard({ type = DEFAULT_TYPE, msg, msg2, url, tel, file, className }: ChattingCardProps) {
   return (
     <Card className={cn(chattingCardCardVarinats({ type }), className)}>
       <CardHeader>
@@ -34,7 +41,7 @@ function ChattingCard({ type = DEFAULT_TYPE, msg, msg2, url, tel, className }: C
           <CardDescription className={cn('text-white', [{ 'text-slate-900': type === 1 }])}>{msg2}</CardDescription>
         )}
       </CardHeader>
-      {(url || tel) && (
+      {(url || tel || file) && (
         <CardContent className="flex flex-col  gap-1">
           {url && (
             <div className="flex items-center gap-1">
@@ -48,6 +55,25 @@ function ChattingCard({ type = DEFAULT_TYPE, msg, msg2, url, tel, className }: C
             <div className="flex items-center gap-1">
               <PhoneIcon className="size-4" />
               {tel}
+            </div>
+          )}
+          {file && (
+            <div className="flex items-center gap-1">
+              {isImage(getImageUrlFromStoarge(file.path)) ? (
+                <PhotoIcon className="size-4" />
+              ) : (
+                <DocumentTextIcon className="size-4" />
+              )}
+              <div className="relative size-10 overflow-hidden">
+                <Link href={getImageUrlFromStoarge(file.path)} target="_blank">
+                  <Image
+                    fill
+                    src={resolveFileIconOrImage(getImageUrlFromStoarge(file.path))}
+                    alt={file.path}
+                    className={cn('absolute inset-0 h-full w-full object-cover')}
+                  />
+                </Link>
+              </div>
             </div>
           )}
         </CardContent>

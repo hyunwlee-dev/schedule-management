@@ -6,9 +6,14 @@ type MessageProps = {
   msg2?: string | null;
   url?: string | null;
   tel?: string | null;
+  file?: {
+    id: string;
+    path: string;
+    fullPath: string;
+  } | null;
 };
 
-function Message({ isFromMe, msg, msg2, url, tel }: MessageProps) {
+function Message({ isFromMe, msg, msg2, url, tel, file }: MessageProps) {
   return (
     <ChattingCard
       className="py-2 px-3 rounded-md end w-fit"
@@ -17,6 +22,7 @@ function Message({ isFromMe, msg, msg2, url, tel }: MessageProps) {
       msg2={msg2}
       url={url}
       tel={tel}
+      file={file}
     />
   );
 }

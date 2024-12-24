@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
 
-import cn from '@/utils/cn';
 import { CloudArrowUpIcon } from '@heroicons/react/24/outline';
+import cn from '@utils/cn';
 import { VariantProps, cva } from 'class-variance-authority';
 import { type Accept, FileRejection, useDropzone } from 'react-dropzone';
 

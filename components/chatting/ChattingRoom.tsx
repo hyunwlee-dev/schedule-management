@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 
+import { Attachment } from '@/types/file';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { useSupabaseRealtime } from '@hooks/useSupabaseRealtime';
 import { useGetAllMessagesQuery } from '@queries/useGetAllMessagesQuery';
@@ -49,6 +50,7 @@ function ChattingRoom() {
             msg2={message.msg2}
             url={message.url}
             tel={message.tel}
+            file={message.file as Attachment | null}
             isFromMe={message.receiver === selectedUserId}
           />
         ))}

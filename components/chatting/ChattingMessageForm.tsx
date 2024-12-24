@@ -8,11 +8,20 @@ import cn from '@utils/cn';
 import { useForm } from 'react-hook-form';
 import z from 'zod';
 
+import { UploadField } from './UploadField';
+
 const chattingMessageFormSchema = z.object({
   msg: z.string().min(1, '인사말을 입력해주세요'),
   msg2: z.string(),
   url: z.string(),
   tel: z.string(),
+  file: z
+    .object({
+      id: z.string(),
+      path: z.string(),
+      fullPath: z.string(),
+    })
+    .nullish(),
 });
 
 type ChattingMessageFormType = z.infer<typeof chattingMessageFormSchema>;
@@ -23,6 +32,7 @@ function ChattingMessageForm({ className }: { className?: string }) {
 
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors },
   } = useForm<ChattingMessageFormType>({
@@ -32,6 +42,7 @@ function ChattingMessageForm({ className }: { className?: string }) {
       msg2: '',
       url: '',
       tel: '',
+      file: null,
     },
   });
 
@@ -81,6 +92,19 @@ function ChattingMessageForm({ className }: { className?: string }) {
         />
         {errors.tel?.message && <span className="text-xs text-red-500">{errors.tel.message}</span>}
       </div>
+
+      <div className="flex flex-col gap-1">
+        <label htmlFor="file" className="text-xs text-slate-600 font-medium">
+          file
+        </label>
+        <UploadField
+          control={control}
+          name="file"
+          supportedFileExtensions={['JPG', 'JPEG', 'PNG', 'ICO', 'PDF', 'DOC', 'DOCX', 'HWP']}
+          maxFileSizeMB={10}
+        />
+      </div>
+
       <button
         type="submit"
         className={cn('mt-4 bg-blue-500 text-white px-4 py-2 rounded-md', [{ 'opacity-50': isPending }])}
