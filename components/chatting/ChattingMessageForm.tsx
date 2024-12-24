@@ -10,6 +10,14 @@ import z from 'zod';
 
 import { UploadField } from './UploadField';
 
+const FORM_DEFAULT_VALUES = {
+  msg: '',
+  msg2: '',
+  url: '',
+  tel: '',
+  file: null,
+} as const;
+
 const chattingMessageFormSchema = z.object({
   msg: z.string().min(1, '인사말을 입력해주세요'),
   msg2: z.string(),
@@ -26,7 +34,7 @@ const chattingMessageFormSchema = z.object({
 
 type ChattingMessageFormType = z.infer<typeof chattingMessageFormSchema>;
 
-function ChattingMessageForm({ className }: { className?: string }) {
+function ChattingMessageForm({ className, handleBlur }: { className?: string; handleBlur: () => void }) {
   const { selectedUserId } = useSelectedUserIdStore();
   const { mutateAsync: sendMessage, isPending } = useSendMessageMutation();
 
@@ -34,20 +42,17 @@ function ChattingMessageForm({ className }: { className?: string }) {
     register,
     control,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<ChattingMessageFormType>({
     resolver: zodResolver(chattingMessageFormSchema),
-    defaultValues: {
-      msg: '',
-      msg2: '',
-      url: '',
-      tel: '',
-      file: null,
-    },
+    defaultValues: FORM_DEFAULT_VALUES,
   });
 
   const onSubmit = async (data: ChattingMessageFormType) => {
     await sendMessage({ ...data, userId: selectedUserId });
+    reset(FORM_DEFAULT_VALUES);
+    handleBlur();
   };
 
   return (

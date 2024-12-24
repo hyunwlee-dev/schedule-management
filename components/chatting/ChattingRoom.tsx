@@ -64,7 +64,10 @@ function ChattingRoom() {
           />
         ) : (
           <div className="relative flex flex-row w-full">
-            <ChattingMessageForm className="p-4 w-full border border-slate-400 rounded-lg m-4" />
+            <ChattingMessageForm
+              handleBlur={handleBlur}
+              className="p-4 w-full border border-slate-400 rounded-lg m-4"
+            />
             <button onClick={handleBlur} type="button" className="absolute right-8 top-7">
               <XMarkIcon className="size-4" />
             </button>
