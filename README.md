@@ -3,9 +3,7 @@
 1. docker 명령어
 
 ```shell
-sudo docker build -t schedule-management . &&
-sudo docker image prune -f &&
-sudo docker run -dp 3000:3000 --name schedule-management-hyunwlee schedule-management
+sudo docker run -dp 3000:3000 --name hyunwlee-schedule-management hyunwlee/schedule-management:latest
 ```
 
 2. http://localhost:3000 확인
@@ -13,6 +11,6 @@ sudo docker run -dp 3000:3000 --name schedule-management-hyunwlee schedule-manag
 3. docker 삭제
 
 ```shell
-sudo docker rm -f schedule-management-hyunwlee &&
-sudo docker rmi schedule-management
+sudo docker rm -f hyunwlee-schedule-management &&
+sudo docker rmi hyunwlee/schedule-management
 ```
