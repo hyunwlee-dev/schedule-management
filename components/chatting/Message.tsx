@@ -1,20 +1,23 @@
-import cn from '@utils/cn';
+import ChattingCard from './ChattingCard';
 
 type MessageProps = {
   isFromMe: boolean;
-  message: string;
+  msg: string;
+  msg2?: string | null;
+  url?: string | null;
+  tel?: string | null;
 };
 
-function Message({ isFromMe, message }: MessageProps) {
+function Message({ isFromMe, msg, msg2, url, tel }: MessageProps) {
   return (
-    <div
-      className={cn('py-2 px-3 rounded-md end w-fit', [
-        { 'ml-auto bg-blue-500 text-white': isFromMe },
-        { 'mr-auto bg-gray-100 text-black': !isFromMe },
-      ])}
-    >
-      <p>{message}</p>
-    </div>
+    <ChattingCard
+      className="py-2 px-3 rounded-md end w-fit"
+      type={isFromMe ? 0 : 1}
+      msg={msg}
+      msg2={msg2}
+      url={url}
+      tel={tel}
+    />
   );
 }
 

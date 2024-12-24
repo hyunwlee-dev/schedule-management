@@ -1,7 +1,7 @@
 import { InputHTMLAttributes, PropsWithChildren, forwardRef } from 'react';
 
-import cn from '@/utils/cn';
 import { CheckIcon } from '@heroicons/react/24/solid';
+import cn from '@utils/cn';
 
 import { RadioProvider, useRadioContext } from './RadioProvider';
 
