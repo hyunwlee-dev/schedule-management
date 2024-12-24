@@ -6,6 +6,7 @@ export type Database = {
       message: {
         Row: {
           created_at: string;
+          file: Json | null;
           id: number;
           is_deleted: boolean | null;
           msg: string;
@@ -17,6 +18,7 @@ export type Database = {
         };
         Insert: {
           created_at?: string;
+          file?: Json | null;
           id?: number;
           is_deleted?: boolean | null;
           msg: string;
@@ -28,6 +30,7 @@ export type Database = {
         };
         Update: {
           created_at?: string;
+          file?: Json | null;
           id?: number;
           is_deleted?: boolean | null;
           msg?: string;
