@@ -1,6 +1,7 @@
 'use server';
 
-import { createAdmin } from '@utils/supabase/server';
+import type { Attachment } from '@/types/file';
+import { createAdmin, createClient } from '@utils/supabase/server';
 
 export const getAllUsers = async () => {
   const supabase = await createAdmin();
@@ -27,12 +28,14 @@ export const sendMessage = async ({
   msg2,
   url,
   tel,
+  file,
   userId,
 }: {
   msg: string;
   msg2?: string;
   url?: string;
   tel?: string;
+  file?: Attachment | null;
   userId: string | null;
 }) => {
   if (userId === null) return;
@@ -50,6 +53,7 @@ export const sendMessage = async ({
     msg2,
     url,
     tel,
+    file,
     receiver: userId,
     sender: session.user.id,
     created_at: new Date().toISOString(),
@@ -80,6 +84,17 @@ export const getAllMessages = async ({ userId }: { userId: string | null }) => {
     .order('created_at', { ascending: true });
 
   if (getMessagesError) return [];
+
+  return data;
+};
+
+export const uploadFile = async (formData: FormData) => {
+  const supabase = await createClient();
+  const file = formData.get('file') as File;
+
+  const { data, error } = await supabase.storage.from('live-chatting').upload(file.name, file, { upsert: true });
+
+  if (error) throw Error(error.message);
 
   return data;
 };
